@@ -1,0 +1,63 @@
+﻿species,nbrood,avgbrood,minbrood,maxbrood,pmult,avgsire,minsire,maxsire,maxbrood_lit
+"African wild dog, Lycaon pictus",6,4.2,,,0.167,1.2,1,2,20
+"Agile antechinus, Antechinus agilis",47,7.7,3,10,0.978,2.8,1,4,
+"Alpine marmot, Marmota marmota",68,3.5,,,0.265,1.3,1,2,6
+"American black bear, Ursus americanus",5,2.4,,,0.2,1.2,1,2,
+"American mink, Neovison vison",5,3.6,2,6,0.6,1.6,1,2,
+"Arctic fox, Vulpes lagopus",8,5.4,,,0.125,1.1,1,2,
+"Asian lesser wihte-toothed shrew, Crocidura shantungensis",18,3,2,4,0.277,1.3,1,2,
+"Big brown bat, Eptesicus fuscus",26,2,,,0.462,1.5,1,2,
+"Big-eared woodrat, Neotoma macrotis",25,2.2,2,3,0.2,1.2,1,2,
+"Brandt's vole, Lasiopodomys brandtii",27,7.1,3,9,0.458,1.5,1,2,
+"Brazilian guinea pig, Cavia aperea",15,3.9,,,0.267,1.3,1,2,
+"Brown bear, Ursus arctos",69,2,,,0.145,1.1,1,2,4
+"Canyon mouse, Peromyscus crinitus",10,3.8,3,5,0.2,1.2,1,2,
+"Cape dune mole rat, Bathyergus suillus",19,2.7,2,4,0.263,1.3,1,2,
+"Cheetah, Acinonyx jubatus",23,3,2,5,0.435,1.5,1,3,
+"Columbian ground squirrel, Urocitellus columbianus",147,3,1,7,0.578,1.8,1,4,7
+"Columbian ground squirrel, Urocitellus columbianus",29,2.8,,,0.724,1.9,,,7
+"Domestic cat, Felis catus",92,3.8,,,0.554,1.8,1,5,
+"Eastern chipmunk, Tamias straitus",43,2.8,2,,0.86,2.5,1,4,5
+"Ermine, Mustela erminea",5,8.4,3,11,0.2,1.2,1,2,
+"Ethiopian wolf, Canis simensis",12,4.7,,,0.333,1.3,1,2,
+"Eurasian badger, Meles meles",174,2,2,4,0.396,1.4,1,4,4
+"Gray fox, Urocyon cinereoargenteus",7,3.3,2,5,0.143,1.1,1,2,
+"Gray mouse lemur, Microcebus murinus",26,2,,,0.654,1.7,1,3,
+"Guadeloupe racoon, Procyon lotor",8,4,3,6,0.875,1.9,1,2,
+"Honey possum, Tarsipes rostratus",5,2.4,2,4,1,2,2,2,
+"House mouse, Mus musculus",143,5.6,,,0.203,1.2,1,2,
+"House mouse, Mus musculus",146,4.1,1,12,0.336,1.4,1,4,
+"Large treeshrew, Tupaia tana",9,2,,,0.333,1.3,1,2,
+"Mexican ground squirrel, Ictidomys parvidens",13,5.2,,,1,,,,
+"Mouflon, Ovis aries",80,2,1,2,0.738,1.7,1,2,2
+"Natal multimammate mouse, Mastomys natalensis",36,9.9,3,16,0.67,1.9,1,4,
+"North American Beaver, Castor canadensis",9,3.7,,,0.556,1.6,1,2,
+"Prairie vole, Microtus ochrogaster",9,4.8,3,6,0.556,1.6,1,2,
+"Pronghorn, Antilocapra smericana",25,2,1,2,0.44,1.4,1,2,
+"Red fox, Vulpes vulpes",12,3.8,2,8,0.5,1.8,1,4,
+"Red squirrel, Tamiasciurus hudsonicus",44,3,,,0.727,2,1,4,5
+"Red-backed vole, Myodes rutilus",215,4.3,,,0.232,1.2,1,3,9
+"Richardson's ground squirrel, Urocitellus richardsonii",15,5.7,,,0.8,2.1,,,
+"Roe deer, Capreolus capreolus",33,2.1,2,3,0.155,1.2,1,2,
+"Round-tailed ground squirrel, Xerospermophilus tereticaudus",31,4.1,1,13,0.548,2.5,1,7,
+"Silvery mole rat, Heliophobius argenteocinereus",11,3.5,3,5,0.091,1.1,1,2,
+"Snowshoe hare, Lepus americanus",16,4,,,0.25,1.3,1,2,
+"Southern flying squirrel, Glaucomys volans",22,3.4,1,6,0.909,,,,
+"Spotted hyena, Crocuta crocuta",102,2,,,0.333,1.3,1,2,3
+"Spotted-tailed quoll,  Dasyurus maculatus",6,5,2,6,0.667,1.8,1,3,
+"Striped field mouse, Apodemus agrarius",44,6.5,5,10,0.636,1.8,1,3,
+"Striped hyena, Hyaena hyaena",4,2.5,2,3,0.5,1.5,1,2,
+"Stuart's antechinus, Antechinus stuartii",39,4.4,2,8,0.923,2.8,1,4,
+"Swamp antechinus, Antechinus minimus",10,6.1,2,8,0.8,2,1,3,
+"Tundra vole, Microtus oeconomus",21,5.3,,,0.381,1.6,1,3,
+"Ural field mouse, Apodemus uralensis",46,5,,,0.435,1.4,1,2,
+"Virginia opossum, Didelphis virginiana",64,8.7,,,0.406,1.4,1,3,13
+"Western European hedgehog, Erinaceus europaeus",5,5,4,7,0.4,1.4,1,2,
+"White-tailed deer, Odocoileus virginianus",27,2.1,2,3,0.259,1.3,1,2,
+"White-tailed deer, Odocoileus virginianus",27,2,1,2,0.37,1.4,1,2,
+"White-toothed shrew, Crocidura russula",42,2.3,,,0,1,1,1,
+"Wild boar, Sus scrofa",30,4.5,2,7,0.1,1.1,1,2,
+"Wolverine, Gulo gulo",43,2.1,2,3,0,1,1,1,
+"Wood mouse, Apodemus sylvaticus",28,4.7,4,6,0.643,1.7,1,3,
+"Woodchuck, Marmota monax",26,3.5,,,0.631,1.8,1,4,
+"Yellow-necked field mouse, Apodemus flavicollis",35,5,,,0.514,1.5,1,2,
