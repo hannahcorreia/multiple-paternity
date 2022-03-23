@@ -32,7 +32,6 @@ All data are provided herein are previously published and available from the fol
 \
 \
 \
-
 _By using the contents on this Github repo and the published article, you agree to cite:_
 
 Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the number of offspring: A model reveals two major groups of species. BioEssays. 43(4). https://doi.org/10.1002/bies.202000247
