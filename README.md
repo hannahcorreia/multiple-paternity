@@ -1,4 +1,6 @@
 # Multiple paternity in viviparous animals
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Code and data for Bayesian MCMC analyses of multiple paternity in viviparous animals:
 
 Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the number of offspring: A model reveals two major groups of species. BioEssays. 43(4).[https://doi.org/10.1002/bies.202000247]( https://doi.org/10.1002/bies.202000247) - see [bioessays2]()
