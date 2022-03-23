@@ -1,0 +1,29 @@
+species,nbrood,avgbrood,minbrood,maxbrood,pmult,avgsire,minsire,maxsire
+"Swordtail, Xiphophorus multilineatus",18,15,,,0.277,1.4,1,3
+"Green swordtail, Xiphophorus helleri",69,21,3,63,0.637,1.8,1,4
+"Green swordtail, Xiphophorus helleri",14,17,9,24,0.571,1.7,1,2
+"Guppy, Poecilia reticulata",22,13,3,40,0.955,3,1,6
+"Guppy, Poecilia reticulata",101,12,4,36,0.95,3.5,1,9
+"Mosquitofish, Gambusia holbrooki",50,23,10,46,0.86,2.2,1,3
+"Black surfperch, Embiotoca jacksoni",12,25,12,36,1,3.6,2,6
+"Striped surfperch, Embiotoca lateralis",12,23,13,32,1,3.5,2,9
+"Shiner perch, Cymatogaster aggregata",27,13,7,22,0.963,4.6,1,8
+"Pacific ocean perch, Sebastes alutus",66,40000,,,0.712,1.9,1,4
+"Gulf pipefish, Syngnathus scovelli",40,66,12,154,0.025,1,1,2
+"Dusky pipefish, Syngnathus floridae",22,505,200,892,0.727,1.9,1,3
+"Dusky pipefish, Syngnathus floridae",52,505,200,892,0.846,2.3,1,4
+"Broad-Nosed Pipefish, Syngnathus typhle",30,45,23,65,0.9,3.1,1,6
+"Broad-Nosed Pipefish, Syngnathus typhle",38,131,29,376,0.763,2.7,1,5
+"Bay pipfish, Syngnathus leptorhynchus",7,45,17,96,0.857,2.1,1,3
+"Barred pipefish, Syngnathus auliscus",7,152,48,319,0.857,2.1,1,3
+"Straight-nosed pipefish, Nerophis ophidian ",15,96,44,127,0,1,1,1
+"Western Australian Seahorse, Hippocampus angustus",15,458,118,720,0,1,1,1
+"Pot-bellied seahorse, Hippocampus abdominalis",12,223,11,982,0,1,1,1
+"Red breast sunfish, Lepomis auritus",25,2204,161,7707,1,3.6,2,6
+"Dollar sunfish, Lepomis marginatus",23,44,15,50,0.826,2.5,1,7
+"Tessellated darter, Etheostoma olmstedi",13,1609,28,3964,0.938,3.2,1,4
+"15-spined stickleback, Spinachia spinachia",25,829,246,1948,0.68,2.6,1,7
+"Sand goby, Pomatoschistus minutus",24,2000,,,1,3.4,2,6
+"Striped darter, Etheostoma virgatum",20,265,150,565,1,4.7,2,7
+"Mottled sculpin, Cottus bairdi",23,180,30,355,0.739,2.8,1,6
+"Two-spotted goby, Gobiusculus flavescens",21,2296,157,3882,1,4.3,2,6

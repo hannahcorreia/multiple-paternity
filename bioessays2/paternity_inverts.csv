@@ -1,0 +1,31 @@
+﻿species,nbroods,avgbrood,minbrood,maxbrood,pmult,avgsire,minsire,maxsire
+"American Lobster, Homarus americanus ",108,10015,,,0.13,1.2,1,3
+"Brown Crab, Cancer pagurus",18,1504065,500000,3000000,0,1,1,1
+"Calamary, Sepioteuthis australis",35,255,,,0.971,2.7,1,4
+"Chokka Squid, Loligo vulgaris",4,2010,,,0.5,2.8,1,5
+"Flat Periwinkle, Littorina obtusata",3,128,50,150,1,5,4,6
+"Freshwater Shrimp, Caridina ensifera",20,16,5,30,1,5.3,2,11
+"Ghost Shrimp, Callichirus islagrande",40,8038,,,0.2,1.2,1,3
+"Inshore Squid, Loligo pealeii",5,2010,,,1,3,2,4
+"Knobbed Whelk, Busycon carica",12,2010,,,0.917,3.5,1,7
+"Land Snail, Anrianta arbustorum",26,64,,,1,3.7,2,6
+"Norway Lobster, Nephrops norvegicus",11,2010,140,4000,0.545,1.1,1,3
+"Octopus, Graneledone boreopacifica",1,57,,,1,2,2,2
+"Placid Crayfish, Orconectes placidus",15,250,20,514,0.6,1.8,1,4
+"Porcelain Crab, Petrolisthes cinctipes",10,1300,,,0.8,1.9,1,3
+"Praying Mantis, Ciulfina klassi",7,12,7,23,0.571,2.1,1,4
+"Praying Mantis, Ciulfina rentzi",8,12,10,14,0,1,1,1
+"Rough Periwinkle, Littorina saxatilis",4,191,23,302,1,19.3,15,23
+"Rugose Squat Lobster, Munida rugosa",25,16045,,30000,0.84,2.2,1,3
+"Sea Hare, Aplysia californica",33,1008130,,,0.758,2.1,1,3
+"Sea Spider, Ammothea hilgendorfi",13,243,35,774,0.538,1.8,1,3
+"Sea Spider, Ammothella biunguiculata",45,64,,,0.689,2.7,1,9
+"Slipper Shell, Crepidula coquimbensis",5,510,,,1,4.4,3,5
+"Common Slipper Shell, Crepidula fornicata",18,25000,,,0.778,2.6,1,5
+"Common Slipper Shell, Crepidula fornicata",12,7500,,,0.917,2.8,1,4
+"Common Slipper Shell, Crepidula fornicata",6,7500,,,1,3.3,2,5
+"Snapping Shrimp, Alpheus angulosus",54,223,,,0.222,1.2,1,2
+"Snow Crab, Chionoecetes opilio",7,3000,,,0,1,1,1
+"Squat Lobster, Munida sarsi",5,16045,,30000,1,4,4,4
+"Swamp Crayfish, Procambarus clarkii",30,276,136,362,0.967,2.6,1,4
+"Veined Squid, Loligo forbesi",3,255,,,0.667,1.7,1,2
