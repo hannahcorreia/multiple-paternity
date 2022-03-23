@@ -29,6 +29,7 @@ All data are provided herein are previously published and available from the fol
 - Avise, J.C., and Liu, J.X. (2010). Multiple mating and its relationship to alternative modes of gestation in male-pregnant versus female-pregnant fish species. Proceedings of the National Academy of Sciences of the USA, 107, 18915–18920.  
 - Avise, J.C., and Liu, J.X. (2011). Multiple mating and its relationship to brood size in pregnant fishes versus pregnant mammals and other vivparous vertebrates. Proceedings of the National Academy of Sciences of the USA, 108, 7091–7095.  
 - Avise, J.C., Tatarenkov, A., and Liu, J.X. (2011). Multiple mating and clutch size in invertebrate brooders versus pregnant vertebrates. Proceedings of the National Academy of Sciences of the USA, 108, 11512–11517.  
+
 \
 \ 
 
