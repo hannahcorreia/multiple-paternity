@@ -1,9 +1,9 @@
 <!--- Readme for Dobson et al. 2018 in Proceedings: Biological Sciences --->
 
-R code for analyses presented in [Dobson et al. (2018)](https://doi.org/10.1098/rspb.2018.2042) are provided in PRSLB_code.R
+R code for analyses presented in [Dobson et al. (2018)](https://doi.org/10.1098/rspb.2018.2042) are provided in [PRSLB_code.R](PRSLB_code.R).
 JAGS must be installed on the computer/machine before being able to run this code. Please visit http://mcmc-jags.sourceforge.net for more info.
 
-Data used in the analyses and required for the R code are given in paternity_mammals.csv
+Data used in the analyses and required for the R code are given in [paternity_mammals.csv](paternity_mammals.csv).
 Variables are as follows (further information can be found in [Dobson et al. 2018](https://doi.org/10.1098/rspb.2018.2042)):  
 
 `nbrood` - number of litters for which multiple paternity was determined for each population  
