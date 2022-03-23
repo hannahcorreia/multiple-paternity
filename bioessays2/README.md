@@ -31,7 +31,7 @@ All data are provided herein are previously published and available from the fol
 - Avise, J.C., Tatarenkov, A., and Liu, J.X. (2011). Multiple mating and clutch size in invertebrate brooders versus pregnant vertebrates. Proceedings of the National Academy of Sciences of the USA, 108, 11512–11517.  
 \
 \
-\
+\  
 _By using the contents on this Github repo and the published article, you agree to cite:_
 
 Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the number of offspring: A model reveals two major groups of species. BioEssays. 43(4). https://doi.org/10.1002/bies.202000247
