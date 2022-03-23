@@ -2,9 +2,14 @@
 # Estimating a key parameter of mammalian mating systems
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1002/bies.201900016)
 
+This is the data repository for public available code and data to reproduce analyses in  
+Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male. BioEssays. 41(12). https://doi.org/10.1002/bies.201900016
+
+## Code
 R code for analyses presented in [Abebe et al. (2019)](https://doi.org/10.1002/bies.201900016) are provided in [`bioessays_data_code.R`](bioessays_data_code.R) and [`bioessays_simulation_code.R`](bioessays_simulation_code.R).
 JAGS must be installed on the computer/machine before being able to run this code. Please visit https://mcmc-jags.sourceforge.io/ for more info.
 
+## Data
 Data used in the analyses and required for the R code are given in [paternity_mammals.csv](paternity_mammals.csv)
 Variables are as follows (further information can be found in [Abebe et al. 2019](https://doi.org/10.1002/bies.201900016)):  
 
