@@ -2,6 +2,9 @@
 # Multiple paternity and the number of offspring
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1002/bies.202000247)
 
+This is the data repository for public available code and data to reproduce analyses in  
+Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the number of offspring: A model reveals two major groups of species. BioEssays. 43(4). https://doi.org/10.1002/bies.202000247  
+
 ## Code
 R code for analyses presented in [Correia et al. (2021)](https://doi.org/10.1002/bies.202000247) are provided in [`bioessays2_allspecies_code.R`](bioessays2_allspecies_code.R).  
 JAGS must be installed on the computer/machine before being able to run this code. Please visit https://mcmc-jags.sourceforge.io/ for more info.
