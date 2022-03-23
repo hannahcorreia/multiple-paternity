@@ -1,5 +1,5 @@
 <!--- Readme for Abebe et al. 2019 in BioEssays --->
-# Multiple paternity and the number of offspring
+# Estimating a key parameter of mammalian mating systems
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1002/bies.201900016)
 
 R code for analyses presented in [Abebe et al. (2019)](https://doi.org/10.1002/bies.201900016) are provided in [`bioessays_data_code.R`](bioessays_data_code.R) and [`bioessays_simulation_code.R`](bioessays_simulation_code.R).
@@ -26,4 +26,4 @@ Sources for the original data collected from manuscripts with full references ar
 \
 By using the contents on this Github repo and the published article, you agree to cite:
 
-Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the number of offspring: A model reveals two major groups of species. BioEssays. 43(4). https://doi.org/10.1002/bies.201900016
+Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male. BioEssays. 41(12). https://doi.org/10.1002/bies.201900016
