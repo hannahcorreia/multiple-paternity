@@ -17,8 +17,8 @@ Variables are as follows (further information can be found in [Dobson et al. 201
 `maxsire` - maximum number of sires  
 
 Sources for the original data collected from manuscripts with full references are given in [PRSLB_DataAppendix.docx](PRSLB_DataAppendix.docx).
-
-
-By using the contents on this Github repo and the published article, you agree to cite: \\
+\
+\
+By using the contents on this Github repo and the published article, you agree to cite:  
 
 Dobson, F. S., Abebe, A., Correia, H. E., Kasumo, C., & Zinner, B. (2018) Multiple paternity and number of offspring in mammals. Proceedings of the Royal Society B: Biological Sciences. 285(1891).[https://doi.org/10.1098/rspb.2018.2042](https://doi.org/10.1098/rspb.2018.2042)
