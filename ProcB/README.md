@@ -1,4 +1,4 @@
-#### Readme for Dobson et al. 2018 in Proceedings: Biological Sciences ####
+<!--- Readme for Dobson et al. 2018 in Proceedings: Biological Sciences --->
 
 R code for analyses presented in Dobson et al. (2018) are provided in PRSLB_code.R
 JAGS must be installed on the computer/machine before being able to run this code. Please visit http://mcmc-jags.sourceforge.net for more info.
