@@ -15,7 +15,7 @@ Supplementary files also held at https://doi.org/10.6084/m9.figshare.c.4285763.v
 By using the contents on this Github repo and the published articles, you agree to cite the above work(s) as applicable.
 
 __Contact Us:__
-Email: [dobsonfs@msn.com](mailto:dobsonfs@msn.com)
-Email: [hcorreia@hsph.harvard.edu](mailto:hcorreia@hsph.harvard.edu)
-Email: [ash@auburn.edu](mailto:ash@auburn.edu)
+- Email: [dobsonfs@msn.com](mailto:dobsonfs@msn.com)  
+- Email: [hcorreia@hsph.harvard.edu](mailto:hcorreia@hsph.harvard.edu)  
+- Email: [ash@auburn.edu](mailto:ash@auburn.edu)  
 
