@@ -1,4 +1,5 @@
 <!--- Readme for Dobson et al. 2018 in Proceedings: Biological Sciences --->
+# Multiple paternity and number of offspring in mammals
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1098/rspb.2018.2042)
 
 This is the data repository for public available code and data to reproduce analyses in  
