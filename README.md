@@ -9,7 +9,7 @@ Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of 
 
 
 Dobson, F. S., Abebe, A., Correia, H. E., Kasumo, C., & Zinner, B. (2018) Multiple paternity and number of offspring in mammals. Proceedings of the Royal Society B: Biological Sciences. 285(1891).[https://doi.org/10.1098/rspb.2018.2042](https://doi.org/10.1098/rspb.2018.2042) - see [📁 ProcB](ProcB) \
-Supplementary files also held at https://doi.org/10.6084/m9.figshare.c.4285763.v1
+Supplementary files submitted at time of article publication also held at https://doi.org/10.6084/m9.figshare.c.4285763.v1
 \
 \
 _By using the contents on this Github repo and the published articles, you agree to cite the above work(s) as applicable._
