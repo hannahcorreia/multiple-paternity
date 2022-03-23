@@ -12,8 +12,7 @@ Dobson, F. S., Abebe, A., Correia, H. E., Kasumo, C., & Zinner, B. (2018) Multip
 Supplementary files also held at https://doi.org/10.6084/m9.figshare.c.4285763.v1
 \
 \
-\
-By using the contents on this Github repo and the published articles, you agree to cite the above work(s) as applicable.
+_By using the contents on this Github repo and the published articles, you agree to cite the above work(s) as applicable._
 \
 \
 \
