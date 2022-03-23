@@ -24,6 +24,6 @@ Sources for the original data collected from manuscripts with full references ar
 \
 \
 \
-By using the contents on this Github repo and the published article, you agree to cite:
+_By using the contents on this Github repo and the published article, you agree to cite:_
 
 Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male. BioEssays. 41(12). https://doi.org/10.1002/bies.201900016
