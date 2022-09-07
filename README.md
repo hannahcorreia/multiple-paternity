@@ -18,6 +18,6 @@ _By using the contents on this Github repo and the published articles, you agree
 \
 __Contact Us:__
 - Email: [dobsonfs@msn.com](mailto:dobsonfs@msn.com)  
-- Email: [hcorreia@hsph.harvard.edu](mailto:hcorreia@hsph.harvard.edu)  
+- Email: [hcorrei2@jhu.edu](mailto:hcorrei2@jhu.edu)  
 - Email: [ash@auburn.edu](mailto:ash@auburn.edu)  
 
