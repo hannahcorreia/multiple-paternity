@@ -569,8 +569,8 @@ MCMC_estq_estm <- data.frame(species = as.character(MCMC_sumtemp[,1]),
 
 
 
-## Need resid p from previous analysis (Dobson et al. 2018)
-qnull_resid <- read.csv("MCMC_resids.csv")[,-1]
+## Need resid p from previous data
+qnull_resid <- read.csv("MCMC_resids.csv")
 
 names(qnull_resid)[5:8] <- c("mean.qnull", "sd.qnull", "qnull2.5", "qnull97.5")
 
