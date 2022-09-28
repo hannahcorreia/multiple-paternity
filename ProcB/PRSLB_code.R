@@ -84,7 +84,7 @@ jagsscript.byspecies_q <- cat("
     avg.M[j] <- avgsire[j]/q     # avg mates, given avgsire and estimated q
   }
   for(j in 1:J){
-    est.pmult.kq[j] <- (1 - (avgbrood[j] * q) * (1 - q)^(avgbrood[j] - 1)) / (1 - (1 - q)^(avgbrood[j]))   
+    est.pmult.kq[j] <- 1 - avgbrood[j] * q * (1 - q)^(avgbrood[j] - 1) / (1 - (1 - q)^avgbrood[j])   
     # estimated prob. of mult. paternity, given avgbrood and estimated q
   }
 }
@@ -234,19 +234,6 @@ MCMC_summary <- data.frame(species = as.character(MCMC_sumtemp[,1]),
 save(MCMC_summary, file = paste0("MCMC_summary_singlerun.rda"))
   
 
-# plot single run with original pmult data (from Avis)
-g1a <- ggplot() +
-  stat_smooth(data = MCMC_summary, aes(avgbrood, mean.est.pmult), color = "red", method = "loess") +
-  geom_point(data = MCMC_summary, aes(avgbrood, mean.est.pmult), color = "red", alpha = 0.2, size = 2.5) +
-  geom_point(data = dat, aes(avgbrood, pmult)) +
-  labs(x="Litter size", y="Probability of multiple paternity") +
-  lims(y = c(0,1)) +
-  scale_x_continuous(breaks = c(seq(2,10, by = 1)) , limits = c(2,10)) +
-  theme_bw(base_size = 16)
-ggsave("p_singlerun.eps", plot = g1a, device = cairo_ps, width = 11, height = 7.5, dpi = 320)
-
-
-
 ################ CALCULATE RESIDUALS ###################
 MCMC_resids <- MCMC_summary
 loess_pmult <- loess(mean.est.pmult ~ avgbrood, data = MCMC_resids)
@@ -307,17 +294,6 @@ print(
 )
 dev.off()
 
-# k as moderator 
-paternity.meta.k <- rma(resid_pmult, vi, mods = ~ avgbrood, data = mammals_singlerun)
-paternity.meta.k
-pdf(file = paste0("forest_bayes_singlerun_k-mod.pdf"), width = 15, height = 12)
-print(
-  forest(paternity.meta.k, slab = mammals_singlerun$species, 
-         order = order(mammals_singlerun$avgbrood), cex = 1)
-)
-dev.off()
-
-
 
 ################ E(M) AND E(S) VS K PLOT ###################
 ## Plot estimated M from data using Bayesian p overlaid on observed avg M vs obs. littersize
@@ -347,43 +323,6 @@ ggsave("R_CL.eps", plot = g2, device = cairo_ps, width = 11, height = 7.5, dpi =
 
 # Combinatorics avgmates calculated using pred_pmult and true k
 mammals_1$avgmate <- exp(log(1-mammals_1$pmult)/(1-mammals_1$avgbrood))
-
-# Used the Avise data avgbrood and avgsire to obtain avgR = k*q/(1-(1-q)^k) and avgM = r/q
-# calculate predicted M
-loess_M <- loess(mean.avgM ~ avgbrood, data = MCMC_resids)
-MCMC_resids$pred_M <- predict(loess_M, newdata = MCMC_resids$avgbrood)
-# plot
-g3 <- ggplot() +
-  # avgR in red is calculated from mean of ZTB dist, since S ~ ZTB
-  stat_smooth(data = MCMC_resids, aes(avgbrood, pred_R, linetype = "Estimated # sires using\ndata K and Bayesian q"), color = "red", method = "loess", se = TRUE) +
-  # points from which the above line was generated:
-  #geom_point(data = MCMC_resids, aes(avgbrood, mean.avgR), color = "red", alpha = 0.2) +
-  # True number of average sires from the Avise data
-  geom_point(data = mammals_1, aes(avgbrood, avgsire, color = "Observed number of sires"), alpha = 0.5, size = 2.5) +
-  # Avise used avgsires as estimated mates (i.e. he does not distinguish b/w mates and sires?)
-  stat_smooth(data = mammals_1, aes(avgbrood, avgsire, linetype = "Observed number of sires"), color = "black", method = "lm", se = FALSE) +
-  # avgM in blue is calculated from mean of NB dist knowing S and q, since M ~ NB
-  stat_smooth(data = MCMC_resids, aes(avgbrood, pred_M, linetype = "Estimated # mates using\ndata S and Bayesian q"), color = "blue", method = "lm", se = TRUE) +
-  # points from which the above line was generated:
-  #geom_point(data = MCMC_resids, aes(avgbrood, mean.avgM), color = "blue", alpha = 0.2) +
-  # avgmates calculated using true pmult and true k 
-  stat_smooth(data = mammals_1[!is.infinite(mammals_1$avgmate),], aes(avgbrood, avgmate, linetype = "Estimated # mates using\ncombinatorial formula"), 
-              color = "green3", method = "lm", se = TRUE) +
-  geom_point(data = mammals_1[!is.infinite(mammals_1$avgmate),], aes(avgbrood, avgmate, color = "Estimated # mates using\ncombinatorial formula"), alpha = 0.5, size = 2.5) +
-  labs(x="Litter size", y="Number of mates/sires") +
-  scale_x_continuous(breaks = c(seq(1,10, by = 1)) , limits = c(1,10)) +
-  scale_y_continuous(limits = c(0,8)) +
-  scale_colour_manual(name = "", values = c("Observed number of sires" = "black",
-                                            "Estimated # mates using\ncombinatorial formula" = "green3")) +
-  scale_linetype_manual(values = c("Estimated # mates using\ndata S and Bayesian q" = 1, # blue line
-                                   "Estimated # mates using\ncombinatorial formula" = 1, # dark green line
-                                   "Estimated # sires using\ndata K and Bayesian q" = 1, # red line
-                                   "Observed number of sires" = 1), # black line
-                        name = "",
-                        guide = guide_legend(override.aes = list(color = c("blue", "green3", "red", "black"), 
-                                                                 fill = c(NA,NA,NA,NA)))) +
-  theme_bw(base_size = 16) + theme(legend.key.height=unit(15, "mm"))
-ggsave("Avise_MS-k.eps", plot = g3, device = cairo_ps, width = 12, height = 7.5, dpi = 320)
 
 
 # Used the generated data to create nsires and calculate estM = nsires/q
