@@ -6,13 +6,16 @@
 # clear the workspace
 rm(list = ls(all = T))
 
+library(tidyverse)
 library(rjags)
 library(R2OpenBUGS)
 library(coda)
 library(extraDistr)
-library(ggplot2)
+library(dplyr)
+# library(ggplot2)
 
-##### specify Ben's post.summ function
+##### specify post.summ function
+## Function written by Ben Staton, Columbia River Inter-Tribal Fish Commission, Portland, OR
 post.summ = function(post, var) {
   
   # coerce to matrix for easy subsetting
@@ -36,6 +39,30 @@ post.summ = function(post, var) {
     return(summ)
   }
 }
+
+#########################################################
+#### ESTIMATION OF Q (RATE OF SUCCESS OF EACH SIRE) 
+#### AND CALCULATION OF M (# MATES) FROM R (# SIRES)
+#########################################################
+
+##### read and prepare data #####
+mamm <- read.csv("paternity_mammals_Avise.csv")
+fish <- read.csv("paternity_fish.csv")
+herp <- read.csv("paternity_herps.csv")
+invert <- read.csv("paternity_inverts.csv")
+invert <- invert %>% rename(nbrood = nbroods)
+dat <- rbind(mamm, fish, herp, invert)
+
+# expand data to create multiple broods within each species (sample size * 10)
+for(i in 1:nrow(dat)){
+  temp.sp <- expand.grid(species = rep(dat[i,]$species, dat[i,]$nbrood*10))
+  if(i == 1){
+    temp <- temp.sp
+  } else {
+    temp <- rbind(temp, temp.sp)
+  } 
+}
+mates.df <- merge(temp, dat, all.x = TRUE, all.y = FALSE)
 
 
 ##### specify model code #####
@@ -83,7 +110,7 @@ jagsscript.byspecies_q <- cat("
     avg.M[j] <- avgsire[j]/q     # avg mates, given avgsire and estimated q
   }
   for(j in 1:J){
-    est.pmult.kq[j] <- (1 - (avgbrood[j] * q) * (1 - q)^(avgbrood[j] - 1)) / (1 - (1 - q)^(avgbrood[j]))   
+    est.pmult.kq[j] <- 1 - avgbrood[j] * q * (1 - q)^(avgbrood[j] - 1) / (1 - (1 - q)^avgbrood[j])
     # estimated prob. of mult. paternity, given avgbrood and estimated q
   }
 }
@@ -91,32 +118,13 @@ jagsscript.byspecies_q <- cat("
 
 
 
-
-##### read and prepare data #####
-mamm <- read.csv("paternity_mammals_Avise.csv")
-fish <- read.csv("paternity_fish.csv")
-herp <- read.csv("paternity_herps.csv")
-invert <- read.csv("paternity_inverts.csv")
-dat <- rbind(mamm, fish, herp, invert)
-
-# expand data to create multiple broods within each species (sample size * 10)
-for(i in 1:nrow(dat)){
-  temp.sp <- expand.grid(species = rep(dat[i,]$species, dat[i,]$nbrood*10))
-  if(i == 1){
-    temp <- temp.sp
-  } else {
-    temp <- rbind(temp, temp.sp)
-  } 
-}
-mates.df <- merge(temp, dat, all.x = TRUE, all.y = FALSE)
-
+#### BEGINNING OF REGENERATION OF DATA LOOP ####
 # Remove any datapoints with NA for avgsire and avgbrood, since Poisson data gen will fail
 mates.dat <- mates.df[!is.na(mates.df$avgsire),]
 
 set.seed(36849)
 
-
-#### generate broods and sires from Poisson for each species ####
+#### (1) generate broods and sires from Poisson for each species ####
 mates <- cbind(mates.dat, littersize = NA, nsires = NA)
 for(i in 1:nrow(mates)){
   # generate broods
@@ -136,14 +144,14 @@ for(i in 1:nrow(mates)){
 mates <- mates[!is.na(mates$avgsire), ]
 
 
-##### MCMC dimensions #####
+##### (3) MCMC dimensions #####
 ni = 10000
 nb = 1000
 nc = 2 # needs to match number of initial values proposed
 nt = 2
 n.iter = ni + nb
 
-##### parameters to monitor #####
+##### (4) parameters to monitor #####
 params = c("q", "nsires", "failed.m", "nmates", "est.M", "avg.R", "avg.M", "est.pmult.kq")
 # params = c("q", "littersize", "nsires", "failed.m", "nmates", "est.M", "avg.R", "avg.M", "est.pmult.kq")
 
@@ -151,14 +159,12 @@ params = c("q", "nsires", "failed.m", "nmates", "est.M", "avg.R", "avg.M", "est.
 ##### CREATE LIST TO HOLD ALL RESULTS FROM JAGS
 jags.results <- list() 
 
-##### run the model in JAGS #####
+##### (5) run the model in JAGS #####
 # Initial conditions for loop
 # Likelihood needs to change for each nsire value, so q calculated for each # nsire
-
 mates.p <- mates
 species <- sort(unique(mates.p$species))
 b <- 1
-
 # Start JAGS
 #starttime <- Sys.time()
 for(r in species){
@@ -298,6 +304,7 @@ dev.off()
 
 
 ################ CALCULATE RESIDUALS ###################
+
 ## log residuals
 MCMC_resids <- MCMC_summary
 loess_pmult <- loess(mean.est.pmult ~ log(avgbrood), data = MCMC_resids)
@@ -319,18 +326,17 @@ dat2$group <- c(rep("mammals", 49), rep("fish", 28), rep("herps", 18), rep("inve
 dat25 <- dat2[!dat2$avgbrood>25000,]
 
 
-save(MCMC_resids, file = "/Users/Hannah/Dropbox/Paternity2/BayesianMCMC/all_species_tog/MCMC_resids.rda")
+save(MCMC_resids, file = "MCMC_resids.rda")
 
 
 ## subset data to only include species with avgbrood <= 25k
 MCMC_resids_25k <- MCMC_resids[!MCMC_resids$avgbrood>25000,]
 
-# plot pred_pmult with lower and upper limits
-mypal_jco <- pal_jco()(10)[c(8,9,7,1)]
+
+# plot pred_pmult with lower and upper limits (grouped by taxa)
 library(RColorBrewer)
 mypal <- brewer.pal(n=8, "Dark2")[c(1,2,4,3)]
-library(wesanderson)
-library(ggsci)
+
 gg2 <- ggplot() +
   geom_point(data = MCMC_resids_25k, aes(log(avgbrood), mean.est.pmult, fill = group, shape = "Estimated"), alpha = 0.5, size = 2.5) +
   geom_point(data = dat25, aes(log(avgbrood), pmult, fill = group, shape = "Observed"), alpha = 0.7, size = 2.5) +
@@ -341,9 +347,6 @@ gg2 <- ggplot() +
   stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_pmult_lcl), color = "blue", se = FALSE, size = 0.5, method = "loess") +
   labs(x="Log litter/clutch size", y="Probability of multiple paternity") +
   lims(y = c(0,1)) +
-  # scale_color_jco(name = "Taxon group") + 
-  # scale_color_manual(values = wes_palette("Darjeeling1")[c(5,2,3,1)]) + 
-  # scale_color_brewer(palette = "Dark2", type = "qual") +
   scale_fill_manual(name = "Taxa", values = mypal,
                     labels = c("Fish", "Reptiles & amphibians","Invertebrates", "Mammals")) +
   guides(fill = guide_legend(override.aes = list(shape = 21))) +
@@ -355,39 +358,69 @@ pdf(file = paste0("p_CL_group.pdf"), width = 10, height = 6)
 print(gg2)
 dev.off()
 
-# ggsave("p_CL_group.eps", plot = gg2, device = cairo_ps, 
-#        width = 10, height = 6, dpi = 320)
+ggsave("p_CL_group.eps", plot = gg2, device = cairo_ps, 
+       width = 10, height = 6, dpi = 320)
+
+
+
+
+############### GRAPHICAL ABSTRACT ###################
+ga1 <- ggplot() +
+  # geom_point(data = MCMC_resids_25k, aes(log(avgbrood), mean.est.pmult, fill = group, shape = "Estimated"), alpha = 0.5, size = 2.5) +
+  geom_point(data = dat25, aes(log(avgbrood), pmult, fill = group), alpha = 0.7, size = 3.5, shape = 23) +
+  # stat_smooth(data = dat, aes(log(avgbrood), pmult), se = FALSE, color = "black", method = "lm") +
+  # stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_pmult), color = "green3", se = FALSE, method = "lm") +
+  geom_ribbon(data = MCMC_resids_25k, aes(x = log(avgbrood), ymin = pred_pmult_lcl, ymax = pred_pmult_ucl), fill = "grey60", alpha = 0.6) +
+  stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_pmult), color = "black", se = FALSE, method = "loess") +
+  # stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_pmult_ucl), color = "blue", se = FALSE, size = 0.5, method = "loess") +
+  # stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_pmult_lcl), color = "blue", se = FALSE, size = 0.5, method = "loess") +
+  labs(x="Log litter/clutch size", y="Probability of multiple paternity") +
+  lims(y = c(0,1)) +
+  scale_fill_manual(name = "Taxa:", values = mypal, 
+                    labels = c("Fish", "Reptiles & amphibians","Invertebrates", "Mammals")) +
+  guides(fill = guide_legend(override.aes = list(shape = 23))) +
+  # scale_shape_manual(name = "Type", labels = c("Estimated", "Observed"), 
+  #                    values = c(21,23)) +
+  scale_x_continuous(breaks = c(seq(0,11, by = 2)) , limits = c(0,11)) +
+  theme_bw(base_size = 16) + 
+  theme(legend.position="bottom", legend.box = "vertical", 
+        legend.background = element_rect(size=0.5, linetype="solid", colour = "grey50"))
+ggsave("GA2.eps", plot = ga1, device = cairo_ps, 
+       width = 8, height = 7, dpi = 600)
 
 
 
 ################ CALCULATE EFFECT SIZES ###################
-# mamm <- read.csv("paternity_mammals_Avise.csv")
-# fish <- read.csv("paternity_fish.csv")
-# herp <- read.csv("paternity_herps.csv")
-# invert <- read.csv("paternity_inverts.csv")
-# dat <- rbind(mamm, fish, herp, invert)
-# dat2 <- dat
-# dat2$group <- c(rep("mammals", 49), rep("fish", 28), rep("herps", 18), rep("inverts", 30))
-# dat25 <- dat2[!dat2$avgbrood>25000,]
-
 dat_1 <- dat25[!is.na(dat25$avgsire),]
-
-# load("MCMC_resids.rda")
-# MCMC_resids_25k <- MCMC_resids[!MCMC_resids$avgbrood>25000,]
 
 # yi = Bayes pmult - true pmult (i.e. MCMC_total_resids$resid_pmult)
 # vi = pmult*(1-pmult)/nbrood
 
 dat_singlerun <- merge(dat_1[,c(1:3)], MCMC_resids_25k, by = c("species", "avgbrood"))
-### order by brood size
+# order by brood size
 dat_singlerun <- dat_singlerun[order(dat_singlerun$avgbrood, dat_singlerun$pmult, dat_singlerun$nbrood),]
 
 ### variance p(1-p)/n for fixed p assumption
 dat_singlerun$vi <- dat_singlerun$pmult*(1-dat_singlerun$pmult)/dat_singlerun$nbrood
 
 library(metafor)
+paternity.meta.bayes <- rma(resid_pmult, vi, data = dat_singlerun)
+paternity.meta.bayes
+pdf(file = paste0("forest_bayes_singlerun-w-labels.pdf"), width = 12, height = 25)
+print(
+  forest(paternity.meta.bayes, slab = dat_singlerun$species, 
+         order = order(dat_singlerun$avgbrood), cex = 1,
+         xlim = c(-2.5,2),
+         xlab = expression(paste(p[B], " - p"))),
+  quote = FALSE,
+  text(-2.5, 126, "Species",  pos=4),
+  text(2, 126, expression(paste(p[B], " - p [95% CI]")), pos=2)
+)
+dev.off()
 
-#### Forest plot with Hedge's g by animal group
+
+
+#### Forest plot with Hedges' g by animal group
 datg <- within(dat_singlerun,
                {m1i <- mean.est.pmult
                m2i <- pmult
@@ -445,8 +478,8 @@ print(
               rows=c(3:20,25:44,49:61,66:111), ylim=c(-1, 115),
               # xlab = expression(paste(p[B], " - p")), mlab = "",
               # header = c("Species", expression(paste(p[B] - p, "  [95% CI]"))),
-              xlab = "Hedge's g  [95% CI]", mlab = "",
-              header = c("Species", "Hedge's g  [95% CI]")),
+              xlab = "Hedges' g  [95% CI]", mlab = "",
+              header = c("Species", "Hedges' g  [95% CI]")),
   
   ### add text with Q-value, dfs, p-value, and I^2 statistic
   text(-10, -1, pos=4, cex=cex1, bquote(paste("RE Model for All Species (Q = ",
@@ -504,41 +537,3 @@ print(
 dev.off()
 
 
-
-
-################ E(M) AND E(S) VS K PLOT ###################
-## log residuals
-loess_R <- loess(mean.avgR ~ log(avgbrood), data = MCMC_resids_25k)
-MCMC_resids_25k$pred_R <- predict(loess_R, newdata = log(MCMC_resids_25k$avgbrood))
-# lower limit
-loess_R_lcl <- loess(avgR2.5 ~ log(avgbrood), data = MCMC_resids_25k)
-MCMC_resids_25k$pred_R_lcl <- predict(loess_R_lcl, newdata = log(MCMC_resids_25k$avgbrood))
-# upper limit
-loess_R_ucl <- loess(avgR97.5 ~ log(avgbrood), data = MCMC_resids_25k)
-MCMC_resids_25k$pred_R_ucl <- predict(loess_R_ucl, newdata = log(MCMC_resids_25k$avgbrood))
-
-# MCMC_resids_25k$group <- c(rep("mammals", 49), rep("fish", 28), rep("herps", 16), rep("inverts", 30))
-# dat2 <- dat
-# dat2$group <- c(rep("mammals", 49), rep("fish", 28), rep("herps", 18), rep("inverts", 30))
-
-
-pdf(file = paste0("R_CL.pdf"), width = 10, height = 6)
-print(
-  ggplot() +
-    geom_point(data = MCMC_resids_25k, aes(log(avgbrood), mean.avgR, fill = group, shape = "Estimated"), alpha = 0.5, size = 2.5) +
-    geom_point(data = dat25, aes(log(avgbrood), avgsire, fill = group, shape = "Observed"), alpha = 0.5, size = 2.5) +
-    stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_R), color = "red", se = FALSE, method = "loess") +
-    stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_R_ucl), color = "blue", se = FALSE, size = 0.5, method = "loess") +
-    stat_smooth(data = MCMC_resids_25k, aes(log(avgbrood), pred_R_lcl), color = "blue", se = FALSE, size = 0.5, method = "loess") +
-    # stat_smooth(data = dat25, aes(log(avgbrood), avgsire), color = "black", method = "lm", se = FALSE) +
-    scale_fill_manual(name = "Taxa", values = mypal,
-                      labels = c("Fish", "Reptiles & amphibians","Invertebrates", "Mammals")) +
-    guides(fill = guide_legend(override.aes = list(shape = 21))) +
-    scale_shape_manual(name = "Type", labels = c("Estimated", "Observed"), 
-                       values = c(21,23)) +
-    labs(x="Log litter/clutch size", y="Number of sires") +
-    scale_x_continuous(breaks = c(seq(0,11, by = 2)), limits = c(0,11)) +
-    scale_y_continuous(breaks = c(seq(0,20, by = 5)), limits = c(0,20)) +
-    theme_bw(base_size = 16)
-)
-dev.off()
