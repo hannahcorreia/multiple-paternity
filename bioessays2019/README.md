@@ -2,7 +2,7 @@
 # Estimating a key parameter of mammalian mating systems
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1002/bies.201900016)
 
-This is the data repository for public available code and data to reproduce analyses in  
+This is a copy of the [Harvard Dataverse data repository](https://doi.org/10.7910/DVN/5BHZVE) for publicly available code and data to reproduce analyses in  
 Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male. BioEssays. 41(12). https://doi.org/10.1002/bies.201900016
 
 ## Code
@@ -32,3 +32,7 @@ Sources for the original data collected from manuscripts with full references ar
 _By using the contents on this Github repo and the published article, you agree to cite:_
 
 Abebe, A., Correia, H. E., & Dobson, F. S. (2019) Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male. BioEssays. 41(12). https://doi.org/10.1002/bies.201900016
+
+_and_
+
+Correia, Hannah; Abebe, Asheber; Dobson, F. Stephen, 2022, "Replication Data for: "Estimating a key parameter of mammalian mating systems: the chance of siring success for a mated male"", [https://doi.org/10.7910/DVN/5BHZVE](https://doi.org/10.7910/DVN/5BHZVE), Harvard Dataverse, V1, UNF:6:qBdH9P9Mi3pn6ub4g4z+Iw== [fileUNF] 
