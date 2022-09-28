@@ -41,4 +41,4 @@ Correia, H. E., Abebe, A., & Dobson, F. S. (2021) Multiple paternity and the num
 
 _and_
 
-Correia, Hannah; Dobson, F. Stephen; Abebe, Asheber, 2022, "Replication Data for: "Multiple paternity and the number of offspring: A model reveals two major groups of species"", [https://doi.org/10.7910/DVN/3DDNQZ](https://doi.org/10.7910/DVN/3DDNQZ), Harvard Dataverse, V1, UNF:6:4Mi7J6WAWWM+ujS9uEw+gA==[fileUNF] 
+Correia, Hannah; Dobson, F. Stephen; Abebe, Asheber, 2022, "Replication Data for: "Multiple paternity and the number of offspring: A model reveals two major groups of species"", [https://doi.org/10.7910/DVN/3DDNQZ](https://doi.org/10.7910/DVN/3DDNQZ), Harvard Dataverse, V1, UNF:6:4Mi7J6WAWWM+ujS9uEw+gA== [fileUNF] 
