@@ -2,7 +2,7 @@
 # Multiple paternity and number of offspring in mammals
 [![Publication Status: Published](https://img.shields.io/badge/Publication%20Status-Published-success)](https://doi.org/10.1098/rspb.2018.2042)
 
-This is the data repository for public available code and data to reproduce analyses in  
+This is a copy of the [Dryad data repository](https://dx.doi.org/10.5061/dryad.d6kj502) for publicly available code and data to reproduce analyses in  
 Dobson, F. S., Abebe, A., Correia, H. E., Kasumo, C., & Zinner, B. (2018) Multiple paternity and number of offspring in mammals. Proceedings of the Royal Society B: Biological Sciences. 285(1891).[https://doi.org/10.1098/rspb.2018.2042](https://doi.org/10.1098/rspb.2018.2042)
 
 ## Code  
@@ -29,3 +29,7 @@ Sources for the original data collected from manuscripts with full references ar
 _By using the contents on this Github repo and the published article, you agree to cite:_  
 
 Dobson, F. S., Abebe, A., Correia, H. E., Kasumo, C., & Zinner, B. (2018) Multiple paternity and number of offspring in mammals. Proceedings of the Royal Society B: Biological Sciences. 285(1891).[https://doi.org/10.1098/rspb.2018.2042](https://doi.org/10.1098/rspb.2018.2042)
+
+_and_
+
+Dobson, F. Stephen et al. (2018), Data from: Multiple paternity and number of offspring in mammals, Dryad, Dataset, [https://doi.org/10.5061/dryad.d6kj502](https://doi.org/10.5061/dryad.d6kj502)
